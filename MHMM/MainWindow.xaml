@@ -1,0 +1,254 @@
+﻿<Window x:Class="MHMM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MHMM"
+        mc:Ignorable="d"
+        Title="Titulo" Height="720" Width="1276"
+        WindowStyle="ToolWindow"
+        ResizeMode="CanResizeWithGrip"
+        SourceInitialized="Window_SourceInitialized">
+
+
+    <Window.Resources>
+
+        <Style x:Key="NoMarginGrid" TargetType="{x:Type Grid}">
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        <Style x:Key="TreeViewItemFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border>
+                            <Rectangle Margin="0,0,0,0"
+             StrokeThickness="5"
+             Stroke="Black"
+             StrokeDashArray="1 2"
+             Opacity="0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type TreeViewItem}" TargetType="{x:Type TreeViewItem}">
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Padding" Value="1,0,0,0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}"/>
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <Setter Property="IsSelected" Value="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Name="Bd"
+                              Grid.Column="1"                                
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              Padding="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="PART_Header"
+                                        ContentSource="Header"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                            </Border>
+                            <ItemsPresenter x:Name="ItemsHost"
+                          Grid.Row="1"
+                          Grid.Column="1"
+                          Grid.ColumnSpan="2"/>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="false">
+                                <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="HasHeader" Value="false"/>
+                                    <Condition Property="Width" Value="Auto"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="PART_Header" Property="MinWidth" Value="75"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="HasHeader" Value="false"/>
+                                    <Condition Property="Height" Value="Auto"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <!--tName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>-->
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"/>
+                                    <Condition Property="IsSelectionActive" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Viewbox Stretch="Fill" StretchDirection="DownOnly">
+        <Grid Height="720">
+
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/mhrmockup.png" Stretch="Uniform"/>
+            </Grid.Background>
+            <Label Content="mods &gt; testName" HorizontalAlignment="Left" Margin="46,14,0,0" VerticalAlignment="Top"/>
+            <Viewbox Height="60" MaxWidth="460" Margin="784,0,18,571" Stretch="Uniform" VerticalAlignment="Bottom" StretchDirection="Both" RenderTransformOrigin="0.5,0.5">
+                <Viewbox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="8"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Viewbox.RenderTransform>
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                    <Label Height="49.3" VerticalContentAlignment="Bottom" FontSize="45" x:Name="MDname" Content="000" FontFamily="Yu Gothic UI Semibold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="0,0,0,0"/>
+                    
+                </Grid>
+            </Viewbox>
+
+            <Label x:Name="MDdesc" FontSize="18" Content="author: 1&#xD;&#xA;original: 000&#xD;&#xA;size 0kb&#xD;&#xA;" HorizontalAlignment="Left" Margin="702,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="172" Width="437">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="8"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
+
+            <Grid Height="314" Width="412" Margin="796,120,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="8"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Border BorderThickness="5" BorderBrush="#91826c" Height="230" Margin="5,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image x:Name="MDimg" Height="225" Stretch="Uniform" StretchDirection="DownOnly" Source="Images/Preview.jpg"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+
+            <Button x:Name="MDbtndir" HorizontalAlignment="Left" Margin="1045,613,0,55" Background="Transparent" Width="178" BorderThickness="0">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="8"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Grid>
+                    <Image Source="Images/bigbtnsmall.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="49" Width="171"/>
+                    <Label FontSize="22" Content="Open dir" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="49,0,0,0"/>
+                </Grid>
+
+            </Button>
+            <Grid>
+
+                <TreeView x:Name="mainTreeView" ItemsSource="{Binding MyRoot}" TreeViewItem.Selected="TreeViewItem_Selected" Margin="40,68,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="617" Height="564" Background="Transparent" BorderThickness="0">
+
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType = "{x:Type local:RootItem}" ItemsSource = "{Binding Path=Categories}">
+
+                            <Grid Width="555" Height="50">
+                                <Image x:Name="rootBackImg" Source="Images/smallbtn.png"/>
+                                <Label Content="{Binding Header}" Foreground="White" FontSize="17" Padding="53,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            </Grid>
+                            <HierarchicalDataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                    <Setter TargetName="rootBackImg" Property="Source" Value="Images/selsmallbtn.png"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsExpanded}" Value="True">
+                                    <Setter TargetName="rootBackImg" Property="Source" Value="Images/selsmallbtn.png"/>
+                                </DataTrigger>
+                            </HierarchicalDataTemplate.Triggers>
+                        </HierarchicalDataTemplate>
+
+                        <HierarchicalDataTemplate DataType = "{x:Type local:CatNode}">
+                            <Grid Width="555" Height="50" Margin="18,-4,0,0">
+                                <Image x:Name="catBackImg" Source="Images/cleansmallbnt.png"/>
+                                <Grid Margin="50,0,0,0">
+                                    <Button x:Name="head" Width="24" Height="24" Background="#00000000" BorderBrush="#00707070" Margin="0,0,0,0" HorizontalAlignment="Left" Click="Head_Click">
+                                        <Image x:Name="imagehead" Source="Images/armoricons/white/head.png" />
+                                    </Button>
+                                    <Button x:Name="torso" Width="24" Height="24" Background="#00000000" BorderBrush="#00707070" Margin="24,0,0,0" HorizontalAlignment="Left" Click="Head_Click">
+                                        <Image x:Name="imagetorso" Source="Images/armoricons/white/torso.png" />
+
+                                    </Button>
+                                    <Button x:Name="arms" Width="24" Height="24" Background="#00000000" BorderBrush="#00707070" Margin="48,0,0,0" HorizontalAlignment="Left" Click="Head_Click">
+                                        <Image x:Name="imagearms" Source="Images/armoricons/white/arms.png" />
+
+                                    </Button>
+                                    <Button x:Name="waist" Width="24" Height="24" Background="#00000000" BorderBrush="#00707070" Margin="72,0,0,0" HorizontalAlignment="Left" Click="Head_Click">
+                                        <Image x:Name="imagewaist" Source="Images/armoricons/white/waist.png" />
+
+                                    </Button>
+                                    <Button x:Name="legs" Width="24" Height="24" Background="#00000000" BorderBrush="#00707070" Margin="96,0,0,0" HorizontalAlignment="Left" Click="Head_Click">
+                                        <Image x:Name="imagelegs" Source="Images/armoricons/white/legs.png" />
+
+                                    </Button>
+                                    <TextBlock Text="{Binding Header}" Margin="124,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+
+                            </Grid>
+                            <HierarchicalDataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                    <Setter TargetName="catBackImg" Property="Source" Value="Images/selcleansmallbnt.png"/>
+                                </DataTrigger>
+                            </HierarchicalDataTemplate.Triggers>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                </TreeView>
+
+            </Grid>
+
+            <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="73,642,0,24" Background="#00000000" Click="btnAdd_Click" Width="177" BorderThickness="0">
+
+                <Grid>
+                    <Image Source="Images/bigbtnsmall.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"/>
+                    <Label FontSize="22" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,7,0,0"/>
+                </Grid>
+            </Button>
+            <Button x:Name="btnRm" HorizontalAlignment="Left" Margin="313,636,0,24" Background="#00000000" Click="btnRm_Click" Width="198" BorderThickness="0">
+                <Grid>
+                    <Image Source="Images/bigbtnsmall.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"/>
+                    <Label FontSize="22" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,7,0,0"/>
+                </Grid>
+            </Button>
+            <Label x:Name="testLbl" Content="Label" HorizontalAlignment="Left" Margin="561,622,0,0" VerticalAlignment="Top" Width="234"/>
+            <Label x:Name="testLbl2" Content="Label" HorizontalAlignment="Left" Margin="1145,457,0,0" VerticalAlignment="Top" Width="140"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="678,597,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
+        </Grid>
+
+    </Viewbox>
+</Window>

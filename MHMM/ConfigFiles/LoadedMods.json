@@ -1,0 +1,77 @@
+{
+  "LoadedMods": {
+    "pl001": {
+      "Name": "hunter armor",
+      "mods": {
+        "testmod1": {
+          "Name": "testarmormod1",
+          "author": "author000",
+          "ID": "001",
+          "HeadCheck": "true",
+          "TorsoCheck": "false",
+          "ArmsCheck": "false",
+          "WaistCheck": "false",
+          "LegsCheck": "false",
+          "HeadFiles": "path1.bat:path2.txt",
+          "TorsoFiles": "",
+          "HandsFiles": "",
+          "WaistFiles": "",
+          "LegsFiles": ""
+        },
+        "testmod2": {
+          "ID": "004",
+          "HeadCheck": "false",
+          "TorsoCheck": "true",
+          "ArmsCheck": "true",
+          "WaistCheck": "true",
+          "LegsCheck": "true",
+          "HeadFiles": "",
+          "TorsoFiles": "path1.bat:path2.txt",
+          "HandsFiles": "path1.bat:path2.txt",
+          "WaistFiles": "path1.bat",
+          "LegsFiles": "path1.bat:path2.txt:path2.txt"
+        }
+      }
+    },
+    "pl002": {
+      "Name": "chain armor",
+      "mods": {
+        "testttmod1": {
+          "Name": "testarmormod500",
+          "author": "author000",
+          "ID": "003",
+          "HeadCheck": "true",
+          "TorsoCheck": "false",
+          "ArmsCheck": "false",
+          "WaistCheck": "false",
+          "LegsCheck": "false",
+          "HeadFiles": "path1.bat:path2.txt",
+          "TorsoFiles": "",
+          "HandsFiles": "",
+          "WaistFiles": "",
+          "LegsFiles": ""
+        }
+      }
+    },
+    "pl003": {
+      "Name": "chain armor",
+      "mods": {
+        "testmodg21": {
+          "Name": "testarmormod300",
+          "author": "author000",
+          "ID": "003",
+          "HeadCheck": "false",
+          "TorsoCheck": "false",
+          "ArmsCheck": "false",
+          "WaistCheck": "false",
+          "LegsCheck": "false",
+          "HeadFiles": "",
+          "TorsoFiles": "",
+          "HandsFiles": "",
+          "WaistFiles": "",
+          "LegsFiles": ""
+        }
+      }
+    }
+  }
+}

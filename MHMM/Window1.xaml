@@ -1,0 +1,22 @@
+﻿<Window x:Class="MHMM.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+
+        xmlns:local="clr-namespace:MHMM"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="756">
+    <Grid>
+        <ListBox x:Name="win2_listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="32,40,400,40" SelectionChanged="win2_listBox_SelectionChanged"/>
+        <Button x:Name="win2_add" Content="Add" Margin="410,368,212,23" Click="win2_add_Click">
+            
+        </Button>
+        <Button x:Name="win2_cancel" Content="Cancel" Margin="594,368,28,23" Click="win2_cancel_Click">
+            
+        </Button>
+        <ComboBox x:Name="win2_idcb" Margin="408,271,75,112" VerticalContentAlignment="Stretch" SelectedValuePath="Content"/>
+        <Label x:Name="win2_modInfo" Content="Label" Margin="408,39,75,0" VerticalAlignment="Top" VerticalContentAlignment="Stretch"/>
+    </Grid>
+</Window>

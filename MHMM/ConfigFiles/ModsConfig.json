@@ -1,0 +1,34 @@
+{
+  "Mods": {
+    "mod001": {
+      "Name": "hunter armor replacer 001",
+      "Author": "author1",
+      "Original_Id": "pl001",
+      "ImgPath": "C:"
+    },
+    "mod002": {
+      "Name": "hunter armor replacer 001",
+      "Author": "author1",
+      "Original_Id": "pl001",
+      "ImgPath": "C:"
+    },
+    "mod003": {
+      "Name": "hunter armor replacer 001",
+      "Author": "author1",
+      "Original_Id": "pl001",
+      "ImgPath": "C:"
+    },
+    "mod004": {
+      "Name": "hunter armor replacer 001",
+      "Author": "author1",
+      "Original_Id": "pl001",
+      "ImgPath": "C:"
+    },
+    "mod005": {
+      "Name": "hunter armor replacer 001",
+      "Author": "author1",
+      "Original_Id": "pl001",
+      "ImgPath": "C:"
+    }
+  }
+}
